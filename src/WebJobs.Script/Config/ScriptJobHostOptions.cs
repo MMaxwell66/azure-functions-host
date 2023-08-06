@@ -38,6 +38,7 @@ namespace Microsoft.Azure.WebJobs.Script
 
         /// <summary>
         /// Gets the current ScriptHost instance id.
+        /// NewGuid in .ctor
         /// </summary>
         public string InstanceId { get; }
 

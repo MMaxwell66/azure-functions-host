@@ -35,7 +35,7 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost
         private readonly IOptionsMonitor<ScriptApplicationHostOptions> _applicationHostOptions;
         private readonly IScriptWebHostEnvironment _scriptWebHostEnvironment;
         private readonly IScriptHostBuilder _scriptHostBuilder;
-        private readonly ILogger _logger;
+        private readonly ILogger _logger; // "Host.General"
         private readonly IEnvironment _environment;
         private readonly IMetricsLogger _metricsLogger;
         private readonly HostPerformanceManager _performanceManager;
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost
 
             _hostStarted = _hostStartedSource.Task;
 
-            State = ScriptHostState.Default;
+            State =ScriptHostState .Default;
 
             if (ShouldMonitorHostHealth)
             {
@@ -826,6 +826,7 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost
             });
         }
 
+        // 也就是说request会被track
         private static void InitializeApplicationInsightsRequestTracking()
         {
             if (_requestTrackingModule != null)

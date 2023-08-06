@@ -63,7 +63,6 @@ namespace Microsoft.Azure.WebJobs.Script
         private readonly IJobHostMetadataProvider _metadataProvider;
         private readonly List<FunctionDescriptorProvider> _descriptorProviders = new List<FunctionDescriptorProvider>();
         private readonly ILoggerFactory _loggerFactory = null;
-        private readonly string _instanceId;
         private readonly IEnvironment _environment;
         private readonly IFunctionDataCache _functionDataCache;
         private readonly IOptionsMonitor<LanguageWorkerOptions> _languageWorkerOptions;
@@ -113,7 +112,6 @@ namespace Microsoft.Azure.WebJobs.Script
             _typeLocator = typeLocator as ScriptTypeLocator
                 ?? throw new ArgumentException(nameof(typeLocator), $"A {nameof(ScriptTypeLocator)} instance is required.");
 
-            _instanceId = Guid.NewGuid().ToString();
             _hostOptions = options;
             _configuration = configuration;
             _distributedLockManager = distributedLockManager;

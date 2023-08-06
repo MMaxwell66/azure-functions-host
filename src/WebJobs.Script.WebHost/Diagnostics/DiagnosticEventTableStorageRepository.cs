@@ -52,7 +52,9 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics
             {
                 if (!_environment.IsPlaceholderModeEnabled() && _tableClient == null)
                 {
-                    string storageConnectionString = _configuration.GetWebJobsConnectionString(ConnectionStringNames.Storage);
+                    // config fallback chain:
+                    //   ConnectionStrings:AzureWebJobsStorage, AzureWebJobsStorage, ConnectionStrings:Storage, Storage
+                    string storageConnectionString = _configuration.GetWebJobsConnectionString(ConnectionStringNames.Storage /* "Storage" */);
                     if (string.IsNullOrEmpty(storageConnectionString))
                     {
                         _logger.LogError("Azure Storage connection string is empty or invalid. Unable to write diagnostic events.");
@@ -69,6 +71,7 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics
             }
         }
 
+        // application name [+ slot]
         internal string HostId
         {
             get

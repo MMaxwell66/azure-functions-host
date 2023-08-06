@@ -35,7 +35,7 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics
             _categoryName = categoryName ?? string.Empty;
             _logLevel = LogLevel.Debug;
             _functionName = LogCategories.IsFunctionCategory(_categoryName) ? _categoryName.Split('.')[1] : null;
-            _isUserFunction = LogCategories.IsFunctionUserCategory(_categoryName);
+            _isUserFunction = LogCategories.(_categoryName);
             _hostInstanceId = hostInstanceId;
             _debugStateProvider = debugStateProvider;
             _eventManager = eventManager;
@@ -47,6 +47,7 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics
 
         public IDisposable BeginScope<TState>(TState state) => _scopeProvider.Push(state);
 
+        // LogLevel >= Debug || InDiagnosticMode
         public bool IsEnabled(LogLevel logLevel)
         {
             // When in diagnostic mode, we log everything, but that has a .UtcNow check,
