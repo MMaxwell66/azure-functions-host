@@ -42,6 +42,7 @@ namespace Microsoft.Azure.WebJobs.Script.Workers.Rpc
             _profileManager = workerProfileManager ?? throw new ArgumentNullException(nameof(workerProfileManager));
             _workerRuntime = _environment.GetEnvironmentVariable(RpcWorkerConstants.FunctionWorkerRuntimeSettingName);
 
+            // beside the host dll, "workers", "../workers"
             WorkersDirPath = GetDefaultWorkersDirectory(Directory.Exists);
             var workersDirectorySection = _config.GetSection($"{RpcWorkerConstants.LanguageWorkersSectionName}:{WorkerConstants.WorkersDirectorySectionName}");
 
@@ -134,10 +135,12 @@ namespace Microsoft.Azure.WebJobs.Script.Workers.Rpc
                     JToken profiles = workerConfig.GetValue(WorkerConstants.WorkerDescriptionProfiles);
                     if (profiles != null)
                     {
+                        // profile是根据condition(比如说linux), 对description做一些修改
                         List<WorkerDescriptionProfile> workerDescriptionProfiles = ReadWorkerDescriptionProfiles(profiles);
                         if (workerDescriptionProfiles.Count > 0)
                         {
                             _profileManager.SetWorkerDescriptionProfiles(workerDescriptionProfiles, workerDescription.Language);
+                            // evaluate and apply
                             _profileManager.LoadWorkerDescriptionFromProfiles(workerDescription, out workerDescription);
                         }
                     }
@@ -149,6 +152,7 @@ namespace Microsoft.Azure.WebJobs.Script.Workers.Rpc
                     AddArgumentsFromAppSettings(workerDescription, languageSection);
 
                     // Validate workerDescription
+                    // check line 132
                     workerDescription.ApplyDefaultsAndValidate(Directory.GetCurrentDirectory(), _logger);
 
                     if (ShouldAddWorkerConfig(workerDescription.Language))

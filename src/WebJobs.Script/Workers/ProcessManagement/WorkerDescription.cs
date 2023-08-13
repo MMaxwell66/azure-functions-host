@@ -20,6 +20,7 @@ namespace Microsoft.Azure.WebJobs.Script.Workers
 
         /// <summary>
         /// Gets or sets the default path to the worker.
+        /// 和executable的区别在于：比如Java上，Exe是runtime, worker是java文件
         /// </summary>
         public string DefaultWorkerPath { get; set; }
 

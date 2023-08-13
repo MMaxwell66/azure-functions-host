@@ -271,6 +271,7 @@ namespace Microsoft.Azure.WebJobs.Script
             using (_metricsLogger.LatencyEvent(MetricEventNames.HostStartupLatency))
             {
                 PreInitialize();
+                // Host health check + addtional(default null)
                 HostInitializing?.Invoke(this, EventArgs.Empty);
 
                 // Generate Functions

@@ -29,6 +29,7 @@ namespace Microsoft.Azure.WebJobs.Script
             _hostIdValidator = hostIdValidator;
         }
 
+        // default to slot name
         public Task<string> GetHostIdAsync(CancellationToken cancellationToken)
         {
             string hostId = _config[ConfigurationSectionNames.HostIdPath];

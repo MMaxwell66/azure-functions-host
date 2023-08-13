@@ -34,6 +34,7 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost
 
         public async Task<ImmutableArray<FunctionMetadata>> GetFunctionMetadataAsync(IEnumerable<RpcWorkerConfig> workerConfigs, IEnvironment environment, bool forceRefresh = false)
         {
+            // 默认的dotnet-isolated是能够index的（只要feature flag设置了）
             bool workerIndexing = Utility.CanWorkerIndex(workerConfigs, _environment, _functionsHostingConfigOptions);
             if (!workerIndexing)
             {

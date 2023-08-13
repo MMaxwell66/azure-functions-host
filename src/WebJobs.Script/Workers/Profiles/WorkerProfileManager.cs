@@ -47,6 +47,7 @@ namespace Microsoft.Azure.WebJobs.Script.Workers
             {
                 foreach (var profile in profiles)
                 {
+                    // the first one match
                     if (profile.EvaluateConditions())
                     {
                         evaluatedProfile = profile;

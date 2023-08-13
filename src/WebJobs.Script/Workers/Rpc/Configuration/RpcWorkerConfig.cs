@@ -3,6 +3,7 @@
 
 namespace Microsoft.Azure.WebJobs.Script.Workers.Rpc
 {
+    // 描述了启动worker的一些东西
     public class RpcWorkerConfig
     {
         public RpcWorkerDescription Description { get; set; }
