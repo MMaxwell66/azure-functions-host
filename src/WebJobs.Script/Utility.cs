@@ -369,7 +369,8 @@ namespace Microsoft.Azure.WebJobs.Script
         /// Applies any additional binding data from the input value to the specified binding data.
         /// This binding data then becomes available to the binding process (in the case of late bound bindings).
         /// </summary>
-        internal static void ApplyBindingData(object value, Dictionary<string, object> bindingData)
+        internal static void 
+        343ApplyBindingData(object value, Dictionary<string, object> bindingData)
         {
             try
             {

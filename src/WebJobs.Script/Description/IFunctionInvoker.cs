@@ -11,6 +11,7 @@ namespace Microsoft.Azure.WebJobs.Script.Description
     {
         /// <summary>
         /// Gets the <see cref="ILogger"/> for this function.
+        /// For FunctionInvokerBase,  "Function.{functionMetadata.Name}"
         /// </summary>
         ILogger FunctionLogger { get; }
 

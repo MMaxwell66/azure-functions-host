@@ -107,6 +107,7 @@ namespace Microsoft.Azure.WebJobs.Script.Description
                 throw new ArgumentNullException(nameof(methodAttributes));
             }
 
+            // 这里是根据functionMetadata生成一些Attribute，这些Attribute会在之后反射生成的时候加到生成的type上。
             ApplyMethodLevelAttributes(functionMetadata, triggerMetadata, methodAttributes);
 
             Collection<ParameterDescriptor> parameters = new Collection<ParameterDescriptor>();

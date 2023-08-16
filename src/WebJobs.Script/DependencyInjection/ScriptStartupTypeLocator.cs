@@ -26,6 +26,8 @@ namespace Microsoft.Azure.WebJobs.Script.DependencyInjection
     /// <summary>
     /// An implementation of an <see cref="IWebJobsStartupTypeLocator"/> that locates startup types
     /// from extension registrations.
+    ///
+    /// dotnet-isolated: check ScriptPath/bin/extensions.json ?? ScriptPath/extensions.json ?? ScriptPath/.azurefunctions/extensions.json
     /// </summary>
     public class ScriptStartupTypeLocator : IWebJobsStartupTypeLocator
     {

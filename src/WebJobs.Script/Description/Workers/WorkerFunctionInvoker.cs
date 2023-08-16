@@ -42,7 +42,7 @@ namespace Microsoft.Azure.WebJobs.Script.Description
             _logger = loggerFactory.CreateLogger<WorkerFunctionInvoker>();
             _applicationLifetime = applicationLifetime;
             _workerInitializationTimeout = workerInitializationTimeout;
-
+`
             InitializeFileWatcherIfEnabled();
 
             if (_outputBindings.Any(p => p.Metadata.IsReturn))

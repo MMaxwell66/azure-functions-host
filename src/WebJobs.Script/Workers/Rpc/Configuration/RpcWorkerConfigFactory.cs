@@ -15,6 +15,7 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Azure.WebJobs.Script.Workers.Rpc
 {
     // Gets fully configured WorkerConfigs from IWorkerProviders
+    // 注意对于dotnet-isloated来说，Startup会注入一个memory config覆盖掉workerConfig，覆盖用的文件来自ScriptPath/workers.config.json
     internal class RpcWorkerConfigFactory
     {
         private readonly IConfiguration _config;

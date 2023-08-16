@@ -125,6 +125,7 @@ namespace Microsoft.Azure.WebJobs.Script.Grpc
                 throw new InvalidOperationException("Could not get gRPC channels for worker ID: " + workerId);
             }
 
+            // 这两个另一端连接到Grpc service (FunctionRpcService)
             _outbound = outbound.Writer;
             _inbound = inbound.Reader;
             // note: we don't start the read loop until StartWorkerProcessAsync is called

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.WebJobs.Script.Grpc
 {
     // Implementation for the grpc service
     // TODO: move to WebJobs.Script.Grpc package and provide event stream abstraction
+    // 这个 FunctionRpc.FunctionRpcBase 是gRPC生成出来的
     internal class FunctionRpcService : FunctionRpc.FunctionRpcBase
     {
         private readonly IScriptEventManager _eventManager;

@@ -202,6 +202,8 @@ namespace Microsoft.Azure.WebJobs.Script.Binding
                 throw new InvalidOperationException("Can't figure out which ctor to call.");
             }
 
+            // 这个的意义是什么，我们已经有一个Attribute了，为什么要去reflect一个Attribute而不是直接用这个示例呢？
+            // 好像是因为WebJobs需要一个type去index，这个type是reflect generated的，它的attribute一定要reflect?
             AttributeBuilderInfo info = new AttributeBuilderInfo
             {
                 Constructor = bestCtor,
