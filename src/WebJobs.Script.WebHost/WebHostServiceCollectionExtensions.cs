@@ -37,6 +37,7 @@ using Microsoft.Extensions.Options;
 
 namespace Microsoft.Azure.WebJobs.Script.WebHost
 {
+    // WebHost
     public static class WebHostServiceCollectionExtensions
     {
         public static IServiceCollection AddWebJobsScriptHostRouting(this IServiceCollection services)

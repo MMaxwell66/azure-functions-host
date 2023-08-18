@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.Azure.WebJobs.Script.Grpc
 {
+    // WebHost
     public static class GrpcServiceCollectionsExtensions
     {
         public static IServiceCollection AddScriptGrpc(this IServiceCollection services)
